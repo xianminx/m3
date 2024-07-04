@@ -6,7 +6,7 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import Mindmap from "../../../components/Mindmap";
 import { toast } from "react-toastify";
 import { Editor, OnChange } from "@monaco-editor/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { decode } from "@/utils/encoder";
 interface PageContentProps {
     content: string;
@@ -16,7 +16,8 @@ interface PageContentProps {
 }
 const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageContentProps) => {
     const router = useRouter();
-
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
     const handleEditorChange: OnChange = (value) => {
         if (value !== undefined) {
             setContent(value);
@@ -25,10 +26,11 @@ const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageConte
 
     const handleTabChange = (key: Key) => {
         const tab = key as string;
-        router.push(`/?tab=${tab}`);
-        setActiveTab(tab);
-    };
-
+      const currentParams = new URLSearchParams(Array.from(searchParams.entries()));
+      currentParams.set('tab', tab);
+      router.push(`${pathname}?${currentParams.toString()}`);
+      setActiveTab(tab);
+    }
     return (
         <div id="page" className="flex w-full flex-col min-h-full">
             <Tabs
@@ -72,7 +74,6 @@ interface SearchParamsHandlerProps {
 }
 const SearchParamsHandler = ({ setContent, setActiveTab }: SearchParamsHandlerProps) => {
     const searchParams = useSearchParams();
-
     useEffect(() => {
         const markdownParam = searchParams.get("content");
         if (markdownParam) {
