@@ -2,11 +2,10 @@
 import Mindmap from "@/components/Mindmap";
 import { decode } from "@/utils/encoder";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Page() {
+function MindmapContent() {
     const [value, setValue] = useState("");
-
     const searchParams = useSearchParams();
 
     useEffect(() => {
@@ -18,4 +17,12 @@ export default function Page() {
     }, [searchParams]);
 
     return <Mindmap content={value} />;
+}
+
+export default function Page() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <MindmapContent />
+        </Suspense>
+    );
 }

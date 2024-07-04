@@ -1,49 +1,36 @@
 "use client";
-import React, { Key, useEffect, useState } from "react";
+
+import React, { useEffect, useState, Suspense, Key } from "react";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-import MarkdownPreivew from "@uiw/react-markdown-preview";
+import MarkdownPreview from "@uiw/react-markdown-preview";
 import Mindmap from "../../../components/Mindmap";
 import { toast } from "react-toastify";
-import { Editor } from "@monaco-editor/react";
+import { Editor, OnChange } from "@monaco-editor/react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-export default function App() {
-    const [content, setContent] = useState("");
-    const searchParams = useSearchParams();
-    const defaultContent = searchParams.get("content") || "";
+import { decode } from "@/utils/encoder";
+interface PageContentProps {
+    content: string;
+    activeTab: string;
+    setContent: (value: string) => void;
+    setActiveTab: (value: string) => void;
+}
+const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageContentProps) => {
     const router = useRouter();
-    const initialTab = searchParams.get("tab") || "markdown";
 
-    const [activeTab, setActiveTab] = useState(initialTab);
-
-    useEffect(() => {
-        // Update the URL query parameter when the active tab changes
-        const queryParams = new URLSearchParams(window.location.search);
-        queryParams.set("tab", activeTab);
-        router.push(`?${queryParams.toString()}`);
-    }, [activeTab, router]);
-
-    useEffect(() => {
-        if (defaultContent) {
-            setContent(defaultContent);
-        } else {
-            fetch("/sample.md")
-                .then((response) => response.text())
-                .then((data) => setContent(data))
-                .catch((error) => toast("Error fetching the markdown file:", error));
+    const handleEditorChange: OnChange = (value) => {
+        if (value !== undefined) {
+            setContent(value);
         }
-    }, [defaultContent]);
+    };
 
-    function handleEditorChange(value: any, event: any) {
-        setContent(value);
-    }
-
-    function handleTabChange(key: Key) {
-        setActiveTab(String(key));
-    }
+    const handleTabChange = (key: Key) => {
+        const tab = key as string;
+        router.push(`/?tab=${tab}`);
+        setActiveTab(tab);
+    };
 
     return (
-        <div id='page' className="flex w-full flex-col min-h-full">
+        <div id="page" className="flex w-full flex-col min-h-full">
             <Tabs
                 key="default"
                 color="primary"
@@ -58,7 +45,7 @@ export default function App() {
                             <Editor
                                 height="90vh"
                                 defaultLanguage="markdown"
-                                defaultValue={content}
+                                value={content}
                                 onChange={handleEditorChange}
                             />
                         </CardBody>
@@ -67,14 +54,55 @@ export default function App() {
                 <Tab key="preview" title="Preview">
                     <Card className="flex-grow">
                         <CardBody className="h-full">
-                            <MarkdownPreivew source={content} style={{ padding: 16 }} />
+                            <MarkdownPreview source={content} style={{ padding: 16 }} />
                         </CardBody>
                     </Card>
                 </Tab>
                 <Tab key="mindmap" title="Mindmap">
-                        <Mindmap content={content} />
+                    <Mindmap content={content} />
                 </Tab>
             </Tabs>
         </div>
+    );
+};
+
+interface SearchParamsHandlerProps {
+    setContent: (value: string) => void;
+    setActiveTab: (value: string) => void;
+}
+const SearchParamsHandler = ({ setContent, setActiveTab }: SearchParamsHandlerProps) => {
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const markdownParam = searchParams.get("content");
+        if (markdownParam) {
+            setContent(decode(markdownParam));
+        }
+
+        const tabParam = searchParams.get("tab") || "markdown";
+        setActiveTab(tabParam);
+    }, [searchParams, setContent, setActiveTab]);
+
+    return null;
+};
+
+export default function Page() {
+    const [content, setContent] = useState("");
+    const [activeTab, setActiveTab] = useState("markdown");
+
+    useEffect(() => {
+        if (!content) {
+            fetch("/sample.md")
+                .then((response) => response.text())
+                .then((data) => setContent(data))
+                .catch((error) => toast("Error fetching the markdown file:", error));
+        }
+    }, [content]);
+
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchParamsHandler setContent={setContent} setActiveTab={setActiveTab} />
+            <PageContent content={content} activeTab={activeTab} setContent={setContent} setActiveTab={setActiveTab} />
+        </Suspense>
     );
 }
