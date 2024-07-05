@@ -5,6 +5,12 @@
     "version": "1.0",
     "description": "There are 2 main APIs: \n\n **/api/links?markdown={markdown}** used to create links for different rendering format, like png, html, and also interactive playground url given the markdown content raw text. The content will be encoded using the base64 similar schemes using in plantuml. \n\n **/api/render/{format}/{hash}** get the rendering content, a png picture for png format, and html source code for html format."
   },
+  "servers": [
+    {
+      "url": "https://m3-swart.vercel.app",
+      "description": "Vercel M3"
+    }
+  ],
   "components": {
     "securitySchemes": {}
   },
