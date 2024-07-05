@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState, Suspense, Key } from "react";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-import MarkdownPreview from "@uiw/react-markdown-preview";
-import Mindmap from "../../../components/Mindmap";
-import { toast } from "react-toastify";
-import { Editor, OnChange } from "@monaco-editor/react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { decode } from "@/utils/encoder";
+import React, { useEffect, useState, Suspense, Key } from 'react';
+import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
+import MarkdownPreview from '@uiw/react-markdown-preview';
+import Mindmap from '../../../components/Mindmap';
+import { toast } from 'react-toastify';
+import { Editor, OnChange } from '@monaco-editor/react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { decode, encode } from '@/utils/encoder';
 interface PageContentProps {
     content: string;
     activeTab: string;
@@ -18,19 +18,25 @@ const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageConte
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+
     const handleEditorChange: OnChange = (value) => {
         if (value !== undefined) {
             setContent(value);
+            const currentParams = new URLSearchParams(Array.from(searchParams.entries()));
+            currentParams.set('hash', encode(value));
+            console.log('currentParams', currentParams.toString());
+            router.replace(`${pathname}?${currentParams.toString()}`);
         }
     };
 
     const handleTabChange = (key: Key) => {
         const tab = key as string;
-      const currentParams = new URLSearchParams(Array.from(searchParams.entries()));
-      currentParams.set('tab', tab);
-      router.push(`${pathname}?${currentParams.toString()}`);
-      setActiveTab(tab);
-    }
+        const currentParams = new URLSearchParams(Array.from(searchParams.entries()));
+        currentParams.set('tab', tab);
+        router.replace(`${pathname}?${currentParams.toString()}`);
+        setActiveTab(tab);
+    };
+
     return (
         <div id="page" className="flex w-full flex-col min-h-full">
             <Tabs
@@ -75,12 +81,12 @@ interface SearchParamsHandlerProps {
 const SearchParamsHandler = ({ setContent, setActiveTab }: SearchParamsHandlerProps) => {
     const searchParams = useSearchParams();
     useEffect(() => {
-        const markdownParam = searchParams.get("content");
-        if (markdownParam) {
-            setContent(decode(markdownParam));
+        const hash = searchParams.get('hash');
+        if (hash) {
+            setContent(decode(hash));
         }
 
-        const tabParam = searchParams.get("tab") || "markdown";
+        const tabParam = searchParams.get('tab') || 'markdown';
         setActiveTab(tabParam);
     }, [searchParams, setContent, setActiveTab]);
 
@@ -88,15 +94,15 @@ const SearchParamsHandler = ({ setContent, setActiveTab }: SearchParamsHandlerPr
 };
 
 export default function Page() {
-    const [content, setContent] = useState("");
-    const [activeTab, setActiveTab] = useState("markdown");
+    const [content, setContent] = useState('');
+    const [activeTab, setActiveTab] = useState('markdown');
 
     useEffect(() => {
         if (!content) {
-            fetch("/sample.md")
+            fetch('/sample.md')
                 .then((response) => response.text())
                 .then((data) => setContent(data))
-                .catch((error) => toast("Error fetching the markdown file:", error));
+                .catch((error) => toast('Error fetching the markdown file:', error));
         }
     }, [content]);
 

@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "M3 OpenAPI Spec Documentation",
+    "version": "1.0",
+    "description": "There are 2 main APIs: \n\n **/api/links?markdown={markdown}** used to create links for different rendering format, like png, html, and also interactive playground url given the markdown content raw text. The content will be encoded using the base64 similar schemes using in plantuml. \n\n **/api/render/{format}/{hash}** get the rendering content, a png picture for png format, and html source code for html format."
+  },
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [],
+  "paths": {
+    "/api/links": {
+      "get": {
+        "description": "Returns the HTML or PNG render URL given markdown content in raw text.",
+        "parameters": [
+          {
+            "name": "markdown",
+            "in": "query",
+            "description": "markdown content in raw text.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/RenderLinks"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/render/{format}/{hash}": {
+      "get": {
+        "description": "Return a rendered png image if format is 'png', and a html source code if format is 'html'.",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "png or html",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "path",
+            "description": "content encoded in base64-similar encoding, see [PlantUML web server](https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "type": "string",
+                "format": "binary"
+              },
+              "text/html": {
+                "schema": null,
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RenderLinks": {
+      "required": [
+        "hash",
+        "html"
+      ],
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "png": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "interactive": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": []
+}

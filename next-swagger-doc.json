@@ -1,0 +1,18 @@
+{
+    "apiFolder": "src/app/api",
+    "schemaFolders": ["models"],
+    "definition": {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "M3 OpenAPI Spec Documentation",
+        "version": "1.0",
+        "description": "There are 2 main APIs: \n\n **/api/links?markdown={markdown}** used to create links for different rendering format, like png, html, and also interactive playground url given the markdown content raw text. The content will be encoded using the base64 similar schemes using in plantuml. \n\n **/api/render/{format}/{hash}** get the rendering content, a png picture for png format, and html source code for html format."
+      },
+      "components": {
+          "securitySchemes": {
+            
+          }
+      },
+      "security": []
+    }
+  }
