@@ -7,22 +7,13 @@ It can render markdown mindmap to svg / png and interactive html, just similar s
 
 ## APIs
 The service provides rendering in 3 formats: 
-1. **interactive HTML**: https://mm.vercel.com/html/`{hash(map)}`
-2. **svg**: https://mm.vercel.com/svg/`{hash(map)}`
-3. **png**: https://mm.vercel.com/png/`{hash(map)}`
+1. **interactive HTML**: https://m3-swart.vercel.app/api/html/`{hash(map)}`
+2. **svg**: https://m3-swart.vercel.app/api/svg/`{hash(map)}`
+3. **png**: https://m3-swart.vercel.app/api/png/`{hash(map)}`
 
 ### Render API
-
-* **GET** https://mm.vercel.com/render?
-  * Parameter:
-    * **content={content}** source of markdown text
-    * **format={svg/html/png}**
-    * **width={width}** width of rendered image, for png / jpg
-    * **height={height}** height of rendered image for png / jpg
-  * Response:
-    * html: https://mm.vercel.com/{format}/`{hash(map)}`?width=xx&height=xx
-    * png: https://mm.vercel.com/{format}/`{hash(map)}`?width=xx&height=xx
-
+* [Swagger UI](https://m3-swart.vercel.app/swagger)
+* [OpenAPI Spec](https://m3-swart.vercel.app/swagger.json)
 
 ## Development
 
@@ -42,3 +33,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
   
 * [Interactive fa HTML](public/sample.html)
+
+## Online Demo
+https://m3-swart.vercel.app/{format}/`{hash(map)}`?width=xx&height=xx
