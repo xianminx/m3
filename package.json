@@ -15,6 +15,7 @@
     "@nextui-org/react": "^2.4.2",
     "@react-aria/ssr": "3.9.4",
     "@react-aria/visually-hidden": "3.8.12",
+    "@sparticuz/chromium": "^123.0.1",
     "@uiw/react-markdown-preview": "^5.1.2",
     "clsx": "2.1.1",
     "framer-motion": "~11.1.1",
