@@ -61,12 +61,13 @@ export async function GET(req: NextRequest, context: { params: Params }) {
 
     const hash = encode(markdown as string);
 
-    const RenderLinks: RenderLinks = {
+    const basePath = req.nextUrl.origin;
+    const links: RenderLinks = {
         hash,
-        png: `https://m3.vercel.app/api/render/png/${hash}`,
-        html: `https://m3.vercel.app/api/render/html/${hash}`,
-        interactive: `https://m3.vercel.app/mind/interactive?hash=${hash}`,
+        png: `${basePath}/api/render/png/${hash}`,
+        html: `${basePath}/api/render/html/${hash}`,
+        interactive: `${basePath}/mind/interactive?hash=${hash}`,
     };
 
-    return NextResponse.json(RenderLinks);
+    return NextResponse.json(links);
 }
