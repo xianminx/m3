@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "title": "M3 OpenAPI Spec Documentation",
     "version": "1.0",
@@ -12,12 +12,32 @@
     }
   ],
   "components": {
-    "securitySchemes": {}
+    "securitySchemes": {},
+    "schemas": {
+      "RenderLinks": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "png": {
+            "type": "string"
+          },
+          "html": {
+            "type": "string"
+          },
+          "interactive": {
+            "type": "string"
+          }
+        }
+      }
+    }
   },
   "security": [],
   "paths": {
     "/api/links": {
       "get": {
+        "operationId": "renderLinks",
         "description": "Returns the HTML or PNG render URL given markdown content in raw text.",
         "parameters": [
           {
@@ -25,15 +45,18 @@
             "in": "query",
             "description": "markdown content in raw text.",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/definitions/RenderLinks"
+                  "$ref": "#/components/schemas/RenderLinks"
                 }
               }
             }
@@ -43,6 +66,7 @@
     },
     "/api/render/{format}/{hash}": {
       "get": {
+        "operationId": "renderWithFormatAndHash",
         "description": "Return a rendered png image if format is 'png', and a html source code if format is 'html'.",
         "parameters": [
           {
@@ -50,51 +74,37 @@
             "in": "path",
             "description": "png or html",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "hash",
             "in": "path",
             "description": "content encoded in base64-similar encoding, see [PlantUML web server](https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
+            "description": "Successful response",
             "content": {
               "image/png": {
-                "type": "string",
-                "format": "binary"
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
               },
               "text/html": {
-                "schema": null,
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               }
             }
           }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "RenderLinks": {
-      "required": [
-        "hash",
-        "html"
-      ],
-      "properties": {
-        "hash": {
-          "type": "string"
-        },
-        "png": {
-          "type": "string"
-        },
-        "html": {
-          "type": "string"
-        },
-        "interactive": {
-          "type": "string"
         }
       }
     }

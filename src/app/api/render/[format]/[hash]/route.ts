@@ -6,27 +6,32 @@ import { decode } from '@/utils/encoder';
  * @swagger
  * /api/render/{format}/{hash}:
  *   get:
+ *     operationId: renderWithFormatAndHash
  *     description: Return a rendered png image if format is 'png', and a html source code if format is 'html'.
  *     parameters:
  *       - name: format
  *         in: path
  *         description: png or html
  *         required: true
- *         type: string
+ *         schema:
+ *           type: string
  *       - name: hash
  *         in: path
  *         description: content encoded in base64-similar encoding, see [PlantUML web server](https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)
  *         required: true
- *         type: string
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
+ *         description: Successful response
  *         content:
  *           image/png:
- *              type: string
- *              format: binary
+ *              schema:
+ *                type: string
+ *                format: binary
  *           text/html:
  *              schema:
- *              type: string
+ *                type: string
  *
  *
  */
