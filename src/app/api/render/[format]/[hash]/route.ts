@@ -63,7 +63,8 @@ export async function GET(req: NextRequest, { params }: { params: { format: stri
             });
         }
     } catch (e) {
-        return NextResponse.json({ error: 'Invalid hash', e }, { status: 400 });
+        console.error('Error rendering', e);
+        return NextResponse.json({ error: 'Render error' + JSON.stringify(e) }, { status: 400 });
     }
 
     return NextResponse.json({ format, hash });
