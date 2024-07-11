@@ -52,7 +52,7 @@ export async function GET(req: NextRequest, { params }: { params: { format: stri
     try {
         const markdown = decode(hash);
         if (format === 'html') {
-            const html = renderHtml(markdown);
+            const html = await renderHtml(markdown);
             return new Response(html, {
                 headers: { 'Content-Type': 'text/html' },
             });

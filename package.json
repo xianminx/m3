@@ -17,6 +17,7 @@
     "@react-aria/visually-hidden": "3.8.12",
     "@sparticuz/chromium": "^123.0.1",
     "@uiw/react-markdown-preview": "^5.1.2",
+    "@vercel/og": "^0.6.2",
     "clsx": "2.1.1",
     "framer-motion": "~11.1.1",
     "intl-messageformat": "^10.5.0",
@@ -36,6 +37,7 @@
     "swagger-ui-react": "^5.17.14"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
