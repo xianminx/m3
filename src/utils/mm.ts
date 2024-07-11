@@ -73,10 +73,11 @@ export async function renderPng(markdown: string): Promise<Buffer> {
 
   console.timeLog('renderPng', 'await browser.newPage');
   const page = await browser.newPage();
+  console.timeLog('renderPng', 'page created isLocal=', isLocal);
 
-  if (isLocal) {
-    debugPuppeter(page);
-  }
+  // if (isLocal) {
+  //   debugPuppeter(page);
+  // }
 
   console.timeLog('renderPng', 'page created');
 
