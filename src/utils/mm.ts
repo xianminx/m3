@@ -66,7 +66,7 @@ export async function renderPng(markdown: string): Promise<Buffer> {
     console.timeLog('renderPng', 'launching browser');
 
     browser = await puppeteer.launch(options);
-    puppeteer.connect({ browserWSEndpoint: browser.wsEndpoint() });
+    // puppeteer.connect({ browserWSEndpoint: browser.wsEndpoint() });
 
     console.timeLog('renderPng', 'browser launched');
   }
