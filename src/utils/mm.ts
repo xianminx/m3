@@ -51,15 +51,16 @@ export async function renderPng(markdown: string): Promise<Buffer> {
 
     // If you don't need webGL, this skips the extraction of the bin/swiftshader.tar.br file, improving performance
     chromium.setGraphicsMode = false;
+    const chromePath = await chromium.executablePath();
     const options = isLocal
       ? {}
       : {
           args: [
             ...chromium.args,
             // @sparticuz/chromium has default chromeArgs to improve serverless performance, but you can add others as you deem appropriate
-            '--font-render-hinting=none', // Improves font-rendering quality and spacing
+            // '--font-render-hinting=none', // Improves font-rendering quality and spacing
           ],
-          executablePath: await chromium.executablePath(),
+          executablePath: chromePath,
           headless: chromium.headless,
           ignoreHTTPSErrors: true,
         };
