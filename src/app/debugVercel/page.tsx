@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { DirectoryItem, DirectoryItemComponent, DirectoryTree } from './TreeNode';
+import { DirectoryItem, DirectoryTree } from './TreeNode';
 
 
 // Modified getDirectoryTree function

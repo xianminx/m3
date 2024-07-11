@@ -7,12 +7,12 @@ export interface DirectoryItem {
 }
 
  
-interface DirectoryItemComponentProps {
+export interface DirectoryItemComponentProps {
   item: DirectoryItem; // Assuming DirectoryItem is defined elsewhere
   depth: number; // Add depth prop
 }
 
-const DirectoryItemComponent: React.FC<DirectoryItemComponentProps> = ({ item, depth }) => {
+export const DirectoryItemComponent: React.FC<DirectoryItemComponentProps> = ({ item, depth }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
