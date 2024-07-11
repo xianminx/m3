@@ -46,31 +46,31 @@ export async function renderPng(markdown: string): Promise<Buffer> {
   //   }
   console.log('renderPng', browser?.connected);
 
-  if (!browser?.connected) {
-    console.timeLog('renderPng', 'await puppeteer.launch');
+  // if (!browser?.connected) {
+  console.timeLog('renderPng', 'await puppeteer.launch');
 
-    // If you don't need webGL, this skips the extraction of the bin/swiftshader.tar.br file, improving performance
-    chromium.setGraphicsMode = false;
-    const chromePath = await chromium.executablePath();
-    const options = isLocal
-      ? {}
-      : {
-          args: [
-            ...chromium.args,
-            // @sparticuz/chromium has default chromeArgs to improve serverless performance, but you can add others as you deem appropriate
-            // '--font-render-hinting=none', // Improves font-rendering quality and spacing
-          ],
-          executablePath: chromePath,
-          headless: chromium.headless,
-          ignoreHTTPSErrors: true,
-        };
-    console.timeLog('renderPng', 'launching browser');
+  // If you don't need webGL, this skips the extraction of the bin/swiftshader.tar.br file, improving performance
+  chromium.setGraphicsMode = false;
+  const chromePath = await chromium.executablePath();
+  const options = isLocal
+    ? {}
+    : {
+        args: [
+          ...chromium.args,
+          // @sparticuz/chromium has default chromeArgs to improve serverless performance, but you can add others as you deem appropriate
+          // '--font-render-hinting=none', // Improves font-rendering quality and spacing
+        ],
+        executablePath: chromePath,
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true,
+      };
+  console.timeLog('renderPng', 'launching browser');
 
-    browser = await puppeteer.launch(options);
-    // puppeteer.connect({ browserWSEndpoint: browser.wsEndpoint() });
+  browser = await puppeteer.launch(options);
+  // puppeteer.connect({ browserWSEndpoint: browser.wsEndpoint() });
 
-    console.timeLog('renderPng', 'browser launched');
-  }
+  console.timeLog('renderPng', 'browser launched');
+  // }
 
   console.timeLog('renderPng', 'await browser.newPage');
   const page = await browser.newPage();
