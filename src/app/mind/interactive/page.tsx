@@ -82,8 +82,17 @@ const SearchParamsHandler = ({ setContent, setActiveTab }: SearchParamsHandlerPr
     const searchParams = useSearchParams();
     useEffect(() => {
         const hash = searchParams.get('hash');
+        const gist = searchParams.get('gist');
         if (hash) {
             setContent(decode(hash));
+        } else if (gist) {
+            fetch(`${gist}`)
+                .then((response) => response.text())
+                .then((data) => {
+                    setContent(data);
+                    console.log('data', data);
+                  })
+                .catch((error) => toast('Error fetching the gist:', error));
         }
 
         const tabParam = searchParams.get('tab') || 'markdown';
@@ -101,8 +110,14 @@ export default function Page() {
         if (!content) {
             fetch('/sample.md')
                 .then((response) => response.text())
-                .then((data) => setContent(data))
-                .catch((error) => toast('Error fetching the markdown file:', error));
+                .then((data) => {
+                    if (!content) {
+                        setContent(data);
+                    }
+                })
+                .catch((error) =>
+                    toast('Error fetching the markdown file:', error)
+                );
         }
     }, [content]);
 
