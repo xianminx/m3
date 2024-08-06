@@ -5,11 +5,11 @@ const nextConfig = {
     async redirects() {
         return [
           // Basic redirect
-          {
-            source: '/',
-            destination: '/mind/interactive',
-            permanent: true,
-          }
+          // {
+          //   source: '/',
+          //   destination: '/mind/interactive',
+          //   permanent: true,
+          // }
         ]
       },
     experimental: {
