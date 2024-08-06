@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import PlausibleProvider from 'next-plausible';
+import NavBar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', preload: false });
 
@@ -19,7 +21,7 @@ export default function RootLayout({
     const domain = process.env.NEXT_PUBLIC_DOMAIN || '';
     const customDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_CUSTOM_DOMAIN;
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             {' '}
             <head>
                 <PlausibleProvider
@@ -28,7 +30,15 @@ export default function RootLayout({
                 />
             </head>
             <body className={inter.className}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    
+                    
+                    <main className="flex flex-col min-h-dvh">
+      <NavBar />
+{children}
+      <Footer />
+    </main>
+                    </Providers>
             </body>
         </html>
     );

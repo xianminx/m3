@@ -42,8 +42,10 @@ const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageConte
             <Tabs
                 key="default"
                 color="primary"
-                aria-label="Tabs colors"
-                radius="full"
+                aria-label="Options"
+                // radius="full"
+                size='sm'
+                placement="top"
                 selectedKey={activeTab}
                 onSelectionChange={handleTabChange}
             >

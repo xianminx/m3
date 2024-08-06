@@ -1,29 +1,19 @@
-import { Divider } from "@nextui-org/divider";
-import { Button } from "@nextui-org/button";
-import { Github, Twitter } from "lucide-react";
+import { Button } from '@nextui-org/button';
 export default function Footer() {
-  return (
-    <footer className="pt-24">
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        <div className="flex justify-between items-center py-10">
-          <p className="text-sm font-light">
-            Made by{" "}
-            <a
-              href="https://twitter.com/gonzalochale"
-              target="_blank"
-              className="font-medium"
-            >
-              Gonzalo Chale
-            </a>{" "}
-            with ❤️
-          </p>
-          <a href="https://github.com/gonzalochale" target="_blank">
-            <Button isIconOnly variant="light">
-              <Github size={24} />
-            </Button>
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
+    return (
+        <footer className="pt-24">
+            <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+                <div className="flex items-center py-10 justify-center">
+                    <img src="/s15n.svg" alt="Logo" className="h-10 w-10" />
+                    <div>© 2024 s15n. All rights reserved. </div>
+                    <a href="/terms" target="_blank">
+                        <Button variant="light">Terms & policies</Button>
+                    </a>
+                    <a href="/privacy" target="_blank">
+                        <Button variant="light">Privacy policy</Button>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    );
 }

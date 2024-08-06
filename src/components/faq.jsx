@@ -3,6 +3,31 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { motion } from "framer-motion";
 
 export default function Faq() {
+const faq = [
+      {
+        "question": "What is s15n and how does it help with reading?",
+        "answer": "s15n, or 'structuralization,' is a tool designed to convert PDF documents into mind-maps, aiding in smarter reading, better retention, and reduced information overload."
+      },
+      {
+        "question": "How does schema theory enhance reading comprehension?",
+        "answer": "Schema theory explains how our brains use mental frameworks to organize and interpret information, making reading more efficient by relating new information to existing knowledge."
+      },
+      {
+        "question": "What are the common types of schemas identified in reading?",
+        "answer": "The four common types are formal schemas (text structure), content schemas (text content), cultural schemas (shared cultural knowledge), and linguistic schemas (language used)."
+      },
+      {
+        "question": "How does s15n utilize large language models (LLMs) for text analysis?",
+        "answer": "s15n leverages LLMs like GPT to extract detailed structures from text documents, converting them into visual mind-maps for easier navigation and comprehension."
+      },
+      {
+        "question": "What applications does schema theory have outside of reading?",
+        "answer": "Schema theory applies to computer programming, language learning, architecture, art, and literature, helping to organize and interpret information in various domains."
+      }
+    ];
+  
+  
+
   const defaultContent =
     "Here is the content of the accordion. You can put any elements here.";
   return (
@@ -21,8 +46,7 @@ export default function Faq() {
           FAQ
         </h4>
         <p className="max-w-xl text-foreground/80 text-center">
-          Here are some of our frequently asked questions. If you have any other
-          questions you’d like answered please feel free to email us.
+          Here are answers to some common questions. If you have any other inquiries, please feel free to email us.
         </p>
       </motion.div>
       <motion.div
@@ -73,15 +97,11 @@ export default function Faq() {
             },
           }}
         >
-          <AccordionItem key="1" aria-label="¿Why NextUI?" title="¿Why NextUI">
-            {defaultContent}
-          </AccordionItem>
-          <AccordionItem key="2" aria-label="¿Why NextUI?" title="¿Why NextUI?">
-            {defaultContent}
-          </AccordionItem>
-          <AccordionItem key="3" aria-label="¿Why NextUI?" title="¿Why NextUI?">
-            {defaultContent}
-          </AccordionItem>
+          {faq.map((item, idx) => (
+            <AccordionItem key={idx} aria-label={item.question} title={item.question}>
+              {item.answer}
+            </AccordionItem>
+          ))}
         </Accordion>
       </motion.div>
     </section>
