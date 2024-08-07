@@ -16,13 +16,24 @@ import { motion } from 'framer-motion';
 import { Github, Twitter } from 'lucide-react';
 
 export default function NavBar() {
-    const menuItems = ['Home', 'Interactive', 'Docs', 'Blog', 'GPT', 'GitHub'];
+    const menuItems = [
+        { label: 'Home', link: '/' },
+        { label: 'Interactive', link: '/mind/interactive' },
+        { label: 'Docs', link: '/docs' },
+        {
+            label: 'Blog',
+            link: 'https://medium.com/@xianminx/revolutionizing-reading-how-s15n-harnesses-schema-theory-for-smarter-comprehension-dfa4e20f6f59',
+        },
+        { label: 'GPT', link: 'https://chatgpt.com/g/g-6jmUwdhcA-s15n' },
+        { label: 'GitHub', link: 'https://github.com/xianminx/m3' },
+    ];
 
     return (
         <Navbar isBlurred maxWidth="xl">
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle />
             </NavbarContent>
+
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <Link href="/" className="flex items-center">
                     <NavbarBrand>
@@ -31,11 +42,11 @@ export default function NavBar() {
                     </NavbarBrand>
                 </Link>
             </NavbarContent>
+
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
                     <Link href="/" className="flex items-center">
                         <Image src="/logo/s15n.png" alt="Logo" className="h-6 w-6" />
-
                         <span className="font-light tracking-tighter text-2xl ml-3 flex gap-3 justify-center items-center">
                             Structuralization
                         </span>
@@ -90,9 +101,9 @@ export default function NavBar() {
             </NavbarContent>
             <NavbarMenu>
                 {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link className="w-full" href="/" size="lg" color="foreground">
-                            {item}
+                    <NavbarMenuItem key={`${item.label}-${index}`} isActive>
+                        <Link className="w-full" href={`${item.link}`} size="lg" color="foreground">
+                            {item.label}
                         </Link>
                     </NavbarMenuItem>
                 ))}
