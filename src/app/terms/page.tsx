@@ -9,10 +9,10 @@ export default function Privacy() {
 
             <h2>1. Introduction</h2>
             <p>
-                Welcome to s15n ("Company", "we", "our", "us")! These Terms of
-                Service ("Terms", "Terms of Service") govern your use of our
+                Welcome to s15n (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;)! These Terms of
+                Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) govern your use of our
                 website located at [Website URL] (together or individually
-                "Service") operated by s15n.
+                &quot;Service&quot;) operated by s15n.
             </p>
             <p>
                 Our Privacy Policy also governs your use of our Service and
@@ -21,7 +21,7 @@ export default function Privacy() {
             </p>
             <p>
                 Your agreement with us includes these Terms and our Privacy
-                Policy ("Agreements"). You acknowledge that you have read and
+                Policy (&quot;Agreements&quot;). You acknowledge that you have read and
                 understood Agreements, and agree to be bound by them.
             </p>
             <p>
@@ -44,7 +44,7 @@ export default function Privacy() {
             <h2>3. Purchases</h2>
             <p>
                 If you wish to purchase any product or service made available
-                through Service ("Purchase"), you may be asked to supply certain
+                through Service (&quot;Purchase&quot;), you may be asked to supply certain
                 information relevant to your Purchase including but not limited
                 to, your credit or debit card number, the expiration date of
                 your card, your billing address, and your shipping information.
@@ -76,7 +76,7 @@ export default function Privacy() {
             <h2>4. Contests, Sweepstakes, and Promotions</h2>
             <p>
                 Any contests, sweepstakes, or other promotions (collectively,
-                "Promotions") made available through Service may be governed by
+                &quot;Promotions&quot;) made available through Service may be governed by
                 rules that are separate from these Terms of Service. If you
                 participate in any Promotions, please review the applicable
                 rules as well as our Privacy Policy. If the rules for a
@@ -87,8 +87,8 @@ export default function Privacy() {
             <h2>5. Subscriptions</h2>
             <p>
                 Some parts of the Service are billed on a subscription basis
-                ("Subscription(s)"). You will be billed in advance on a
-                recurring and periodic basis ("Billing Cycle"). Billing cycles
+                (&quot;Subscription(s)&quot;). You will be billed in advance on a
+                recurring and periodic basis (&quot;Billing Cycle&quot;). Billing cycles
                 are set either on a monthly or annual basis, depending on the
                 type of subscription plan you select when purchasing a
                 Subscription.
@@ -120,7 +120,7 @@ export default function Privacy() {
             <h2>6. Free Trial</h2>
             <p>
                 s15n may, at its sole discretion, offer a Subscription with a
-                free trial for a limited period of time ("Free Trial").
+                free trial for a limited period of time (&quot;Free Trial&quot;).
             </p>
             <p>
                 You may be required to enter your billing information in order
@@ -169,7 +169,7 @@ export default function Privacy() {
             <p>
                 Our Service allows you to post, link, store, share, and
                 otherwise make available certain information, text, graphics,
-                videos, or other material ("Content"). You are responsible for
+                videos, or other material (&quot;Content&quot;). You are responsible for
                 Content that you post on or through Service, including its
                 legality, reliability, and appropriateness.
             </p>
@@ -227,7 +227,7 @@ export default function Privacy() {
                 </li>
                 <li>
                     To transmit, or procure the sending of, any advertising or
-                    promotional material, including any "junk mail", "chain
+                    promotional material, including any &quot;junk mail&quot;, &quot;chain
                 </li>
             </ul>
             <h2>11. Analytics</h2>
@@ -295,20 +295,20 @@ export default function Privacy() {
                 We respect the intellectual property rights of others. It is our
                 policy to respond to any claim that Content posted on Service
                 infringes on the copyright or other intellectual property rights
-                ("Infringement") of any person or entity.
+                (&quot;Infringement&quot;) of any person or entity.
             </p>
             <p>
                 If you are a copyright owner, or authorized on behalf of one,
                 and you believe that the copyrighted work has been copied in a
                 way that constitutes copyright infringement, please submit your
                 claim via email to [Contact Email], with the subject line:
-                "Copyright Infringement" and include in your claim a detailed
+                &quot;Copyright Infringement&quot; and include in your claim a detailed
                 description of the alleged Infringement as detailed below, under
-                "DMCA Notice and Procedure for Copyright Infringement Claims"
+                &quot;DMCA Notice and Procedure for Copyright Infringement Claims&quot;
             </p>
             <p>
                 You may be held accountable for damages (including costs and
-                attorneys' fees) for misrepresentation or bad-faith claims on
+                attorneys&apos; fees) for misrepresentation or bad-faith claims on
                 the infringement of any Content found on and/or through Service
                 on your copyright.
             </p>
@@ -325,7 +325,7 @@ export default function Privacy() {
             <ul className="list-disc">
                 <li>
                     An electronic or physical signature of the person authorized
-                    to act on behalf of the owner of the copyright's interest;
+                    to act on behalf of the owner of the copyright&apos;s interest;
                 </li>
                 <li>
                     A description of the copyrighted work that you claim has
@@ -348,7 +348,7 @@ export default function Privacy() {
                     A statement by you, made under penalty of perjury, that the
                     above information in your notice is accurate and that you
                     are the copyright owner or authorized to act on the
-                    copyright owner's behalf.
+                    copyright owner&apos;s behalf.
                 </li>
             </ul>
             <p>
@@ -362,7 +362,7 @@ export default function Privacy() {
                 third party sites and tools with information and feedback
                 concerning errors, suggestions for improvements, ideas,
                 problems, complaints, and other matters related to our Service
-                ("Feedback"). You acknowledge and agree that: (i) you shall not
+                (&quot;Feedback&quot;). You acknowledge and agree that: (i) you shall not
                 retain, acquire or assert any intellectual property right or
                 other right, title or interest in or to the Feedback; (ii)
                 Company may have development ideas similar to the Feedback;
@@ -396,8 +396,8 @@ export default function Privacy() {
                 RELIANCE ON ANY SUCH CONTENT, GOODS{' '}
             </p>
             <p>
-                THESE SERVICES ARE PROVIDED BY COMPANY ON AN "AS IS" AND "AS
-                AVAILABLE" BASIS. COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES
+                THESE SERVICES ARE PROVIDED BY COMPANY ON AN &quot;AS IS&quot; AND &quot;AS
+                AVAILABLE&quot; BASIS. COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES
                 OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THEIR
                 SERVICES, OR THE INFORMATION, CONTENT OR MATERIALS INCLUDED
                 THEREIN. YOU EXPRESSLY AGREE THAT YOUR USE OF THESE SERVICES,

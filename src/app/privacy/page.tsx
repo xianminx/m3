@@ -8,7 +8,7 @@ export default function Privacy() {
 
             <h2>1. Introduction</h2>
             <p>
-                Welcome to s15n ("Company", "we", "our", "us")! We are committed
+                Welcome to s15n (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;)! We are committed
                 to protecting your personal information and your right to
                 privacy. If you have any questions or concerns about our policy,
                 or our practices with regards to your personal information,
@@ -114,7 +114,7 @@ export default function Privacy() {
                 We only share and disclose your information in the following
                 situations:
             </p>
-            <ul class="list-disc">
+            <ul className="list-disc">
                 {' '}
                 <li>
                     <strong>Compliance with Laws.</strong>
