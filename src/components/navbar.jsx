@@ -13,6 +13,7 @@ import { Link } from '@nextui-org/link';
 import { Button } from '@nextui-org/button';
 import ThemeSwitcher from './ThemeSwitcher';
 import { motion } from 'framer-motion';
+import { Github, Twitter } from 'lucide-react';
 
 export default function NavBar() {
     const menuItems = ['Home', 'Interactive', 'Docs', 'Blog', 'GPT', 'GitHub'];
@@ -33,7 +34,7 @@ export default function NavBar() {
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
                     <Link href="/" className="flex items-center">
-                    <Image src="/logo/s15n.png" alt="Logo" className="h-6 w-6" />
+                        <Image src="/logo/s15n.png" alt="Logo" className="h-6 w-6" />
 
                         <span className="font-light tracking-tighter text-2xl ml-3 flex gap-3 justify-center items-center">
                             Structuralization
@@ -76,6 +77,13 @@ export default function NavBar() {
                 </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
+                <NavbarItem>
+                    <a href="https://github.com/xianminx/m3" target="_blank">
+                        <Button isIconOnly variant="light">
+                            <Github size={24} />
+                        </Button>
+                    </a>
+                </NavbarItem>{' '}
                 <NavbarItem>
                     <ThemeSwitcher />
                 </NavbarItem>
