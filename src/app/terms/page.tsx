@@ -1,8 +1,7 @@
 export default function Privacy() {
     return (
-        <div className="w-full lg:w-1/2 px-4 mx-auto leading-loose list-disc font-sans">
-            <h1 className="text-center text-lg">Terms of Service</h1>
-
+        <article className="prose prose-zinc prose-base w-full lg:w-1/2 mx-auto leading-loose text-justify pt-8">
+            <h1>Terms of Service</h1>
             <p>
             Last updated: 2024.08.08
             </p>
@@ -215,7 +214,7 @@ export default function Privacy() {
                 You may use Service only for lawful purposes and in accordance
                 with Terms. You agree not to use Service:
             </p>
-            <ul className="list-disc">
+            <ul>
                 <li>
                     In any way that violates any applicable national or
                     international law or regulation.
@@ -322,7 +321,7 @@ export default function Privacy() {
                 following information in writing (see 17 U.S.C 512(c)(3) for
                 further detail):
             </p>
-            <ul className="list-disc">
+            <ul>
                 <li>
                     An electronic or physical signature of the person authorized
                     to act on behalf of the owner of the copyright&apos;s interest;
@@ -418,6 +417,6 @@ export default function Privacy() {
                 OR ITEMS OBTAINED THROUGH THE SERVICES WILL OTHERWISE MEET YOUR
                 NEEDS OR{' '}
             </p>
-        </div>
+        </article>
     );
 }
