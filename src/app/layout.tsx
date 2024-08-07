@@ -24,21 +24,16 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             {' '}
             <head>
-                <PlausibleProvider
-                    domain={domain}
-                    customDomain={customDomain}
-                />
+                <PlausibleProvider domain={domain} customDomain={customDomain} />
             </head>
             <body className={inter.className}>
                 <Providers>
-                    
-                    
                     <main className="flex flex-col min-h-dvh">
-      <NavBar />
-{children}
-      <Footer />
-    </main>
-                    </Providers>
+                        <NavBar />
+                        {children}
+                        <Footer />
+                    </main>
+                </Providers>
             </body>
         </html>
     );

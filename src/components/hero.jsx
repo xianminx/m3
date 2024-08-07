@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
-import { Image } from '@nextui-org/react';
+import { Image } from '@nextui-org/image';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -46,7 +46,6 @@ export default function Hero() {
             isZoomed
             width={1000}
             height={600}
-            objectFit="cover"
             src="/markmap.svg"
             alt="Mind Map"
             className="m-5 pl-96"
