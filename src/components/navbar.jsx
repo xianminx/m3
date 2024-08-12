@@ -18,7 +18,7 @@ import { Github, Twitter } from 'lucide-react';
 export default function NavBar() {
     const menuItems = [
         { label: 'Home', link: '/' },
-        { label: 'Interactive', link: '/mind/interactive' },
+        { label: 'Mind', link: '/mind' },
         { label: 'Docs', link: '/docs' },
         {
             label: 'Blog',
@@ -53,8 +53,8 @@ export default function NavBar() {
                     </Link>
                 </NavbarBrand>
                 <NavbarItem>
-                    <Button as={Link} variant="light" href="/mind/interactive">
-                        Interactive
+                    <Button as={Link} variant="light" href="/mind">
+                        Mind
                     </Button>
                 </NavbarItem>
                 <NavbarItem>
