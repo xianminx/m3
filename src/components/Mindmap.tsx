@@ -10,17 +10,21 @@ function renderToolbar(mm: Markmap, wrapper: HTMLElement) {
     while (wrapper?.firstChild) wrapper.firstChild.remove();
     if (mm && wrapper) {
         const toolbar = new Toolbar();
+        // temp fix for toolbar brand layout issue
+        toolbar.setBrand(false);
         toolbar.attach(mm);
         wrapper.append(toolbar.render());
     }
 }
 
 type MarkmapProps = {
-    content: string;
+    content: string;    
+    style?: React.CSSProperties; // Add style prop
+    className?: string; // Add className prop
 };
 
 export default function Mindmap(props: MarkmapProps) {
-    const { content } = props;
+    const { content, style, className } = props;
     const refSvg = useRef<SVGSVGElement>(null);
     const refMm = useRef<Markmap>();
     const refToolbar = useRef<HTMLDivElement>(null);
@@ -66,9 +70,10 @@ export default function Mindmap(props: MarkmapProps) {
     }, [isReady, refMm, content, transformer]);
 
     return (
-        <div className="flex flex-col grow-1 min-h-screen w-full h-full">
-            <svg className="grow-1 w-full h-full min-h-screen" ref={refSvg} />
-            <div className="absolute bottom-4 right-0" ref={refToolbar}></div>
+        <div className={`flex flex-col flex-grow w-full h-full ${className}`} style={style}> 
+            <svg className="grow-1 flex-grow w-full h-full" ref={refSvg} />
+            <div className="absolute right-0 top-0 mr-2 mt-2" ref={refToolbar}></div>
+            
         </div>
     );
 }

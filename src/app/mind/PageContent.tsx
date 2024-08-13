@@ -26,14 +26,14 @@ export default function PageContent() {
     };
 
     return (
-        <div className="relative flex flex-col w-full h-full">
+        <div className="relative flex flex-col w-full h-full flex-grow">
             <div className="absolute top-0 left-0 w-auto mr-4 ml-2 py-2 z-20">
                 <CollapsibleIconMenu
                     initMode="mindmap"
                     onModeChange={(mode: string) => setMode(mode)}
                 />
             </div>
-            <div className="flex-grow">
+            <div className="flex flex-col flex-grow h-full ">
                 {mode === 'editor' && (
                     <div className="flex-grow">
                         <Editor
@@ -48,7 +48,9 @@ export default function PageContent() {
                 {mode === 'preview' && (
                     <MarkdownPreview source={content} style={{ padding: 32 }} />
                 )}
-                {mode === 'mindmap' && <Mindmap content={content} />}
+                {mode === 'mindmap' && (
+                     <Mindmap content={content} className={`p-2 ${theme === 'dark' ? 'markmap-dark' : 'markmap'}`} />
+                )}
             </div>
         </div>
     );
