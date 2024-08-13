@@ -11,13 +11,17 @@
     "swagger": "next-swagger-doc-cli next-swagger-doc.json"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
     "@monaco-editor/react": "^4.6.0",
     "@next/bundle-analyzer": "^14.2.5",
+    "@next/mdx": "^14.2.5",
     "@nextui-org/image": "^2.0.31",
     "@nextui-org/react": "^2.4.6",
     "@react-aria/ssr": "3.9.4",
     "@react-aria/visually-hidden": "3.8.12",
     "@sparticuz/chromium": "^123.0.1",
+    "@types/mdx": "^2.0.13",
     "@uiw/react-markdown-preview": "^5.1.2",
     "@vercel/og": "^0.6.2",
     "clsx": "2.1.1",
