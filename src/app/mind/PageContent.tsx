@@ -1,5 +1,6 @@
 'use client';
 import CollapsibleIconMenu from '@/components/CollapsibleIconMenu';
+import GistLoader from '@/components/GistLoader';
 import Mindmap from '@/components/Mindmap';
 
 import { useSearchParamsHandler } from '@/hooks/useSearchParamsHandler';
@@ -36,6 +37,10 @@ export default function PageContent() {
             <div className="flex flex-col flex-grow h-full ">
                 {mode === 'editor' && (
                     <div className="flex-grow">
+                               <div className="absolute top-16 left-0 w-auto mr-4 ml-2 py-2 z-20">
+                <GistLoader onMarkdownContent={(content) => setContent(content)}
+                />
+            </div>
                         <Editor
                             height="90vh"
                             defaultLanguage="markdown"

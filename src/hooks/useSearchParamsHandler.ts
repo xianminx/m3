@@ -41,7 +41,9 @@ export const useSearchParamsHandler = (): UseSearchParamsHandlerProps => {
                         'no gist or hash is given, load the sample markdown'
                     );
 
-                    const response = await fetch('/sample.md');
+                    const response = await fetch(
+                        'https://gist.githubusercontent.com/xianminx/4f3f3b8e9433aa5191682025caf7a51b/raw/b25ded6d8f82ccdc54982252f8908938d319e3b6/Schema%2520Theory%2520in%2520Reading.md'
+                    );
                     initContent = await response.text();
                 } catch (error) {
                     toast.error(`Error fetching the markdown file: ${error}`);
