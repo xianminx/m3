@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
 import {
-    Button,
     Dropdown,
-    DropdownTrigger,
-    DropdownMenu,
     DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
 } from '@nextui-org/react';
+import { useState } from 'react';
 import { FaMarkdown } from 'react-icons/fa';
-import { VscPreview } from 'react-icons/vsc';
 import { RiMindMap } from 'react-icons/ri';
-import React from 'react';
+import { VscPreview } from 'react-icons/vsc';
 
 interface CollapsibleIconMenuProps {
     initMode: string;
@@ -64,34 +62,26 @@ const CollapsibleIconMenu = (props: CollapsibleIconMenuProps) => {
         >
             <Dropdown isOpen={isHovered}>
                 <DropdownTrigger>
-                    <div className="px-4 text-primary flex items-center justify-end gap-2 transition-all duration-300 ease-in-out">
+                    <div className="px-4 flex items-center justify-end gap-2 transition-all duration-300 ease-in-out">
                         <div
-                            className={`transform transition-all duration-300 ease-in-out flex items-center ${
-                                isHovered ? 'translate-x-0' : 'translate-x-full'
-                            }`}
+                            className={`transform transition-all duration-300 ease-in-out flex items-center scale-1 hover:scale-150
+                                text-neutral-500 hover:text-primary`}
                         >
                             {mode.icon}
-                            {isHovered && (
-                                <div className="ml-2">{mode.label}</div>
-                            )}
                         </div>
                     </div>
                 </DropdownTrigger>
                 <div
                     className="absolute top-full left-0"
-                    onMouseEnter={() => setIsHovered(true)} // Keep menu visible
-                    onMouseLeave={() => setIsHovered(false)} // Allow it to close when leaving the menu
+                    onMouseEnter={() => setIsHovered(true)} 
+                    onMouseLeave={() => setIsHovered(false)} 
                 >
                     <DropdownMenu
                         variant="faded"
                         aria-label="Mode"
                         onAction={(key) => selectMode(key as string)}
                         items={MODES}
-                        className={`transition-all duration-1000 ease-in-out transform ${
-                            isHovered
-                                ? 'scale-y-100 opacity-100'
-                                : 'scale-y-0 opacity-0'
-                        } origin-top`}
+                        className={`transition-all duration-1000 ease-in-out transform `}
                     >
                         {(item) => (
                             <DropdownItem

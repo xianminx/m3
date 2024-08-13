@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_DEBUG=true DEBUG=* next build",
+    "build": "NEXT_DEBUG=false DEBUG=AAA next build",
     "start": "next start",
     "lint": "next lint",
     "swagger": "next-swagger-doc-cli next-swagger-doc.json"
