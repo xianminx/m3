@@ -62,7 +62,7 @@ const CollapsibleIconMenu = (props: CollapsibleIconMenuProps) => {
         >
             <Dropdown isOpen={isHovered}>
                 <DropdownTrigger>
-                    <div className="px-4 flex items-center justify-end gap-2 transition-all duration-300 ease-in-out">
+                    <div className=" flex items-center justify-end gap-2 transition-all duration-300 ease-in-out">
                         <div
                             className={`transform transition-all duration-300 ease-in-out flex items-center scale-1 hover:scale-150
                                 text-neutral-500 hover:text-primary`}

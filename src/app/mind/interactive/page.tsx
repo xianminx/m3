@@ -18,6 +18,7 @@ const PageContent = ({ content, activeTab, setContent, setActiveTab }: PageConte
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    
 
     const handleEditorChange: OnChange = (value) => {
         if (value !== undefined) {

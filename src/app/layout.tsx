@@ -1,28 +1,27 @@
-import type { Metadata } from 'next';
+'use client';
+import Footer from '@/components/footer';
+import NavBar from '@/components/navbar';
+import PlausibleProvider from 'next-plausible';
 import { Inter } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 import './globals.css';
 import { Providers } from './providers';
-import PlausibleProvider from 'next-plausible';
-import NavBar from '@/components/navbar';
-import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', preload: false });
-
-export const metadata: Metadata = {
-    title: 'M3',
-    description: 'Markdown Mind Map',
-};
 
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const pathname = usePathname();
+
     const domain = process.env.NEXT_PUBLIC_DOMAIN || '';
     const customDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_CUSTOM_DOMAIN;
+    const showFooter = !pathname.startsWith('/mind'); // Hide footer for /mind and its subpages
+
     return (
         <html lang="en" suppressHydrationWarning>
-            {' '}
             <head>
                 <PlausibleProvider domain={domain} customDomain={customDomain} />
             </head>
@@ -31,7 +30,7 @@ export default function RootLayout({
                     <main className="flex flex-col min-h-dvh">
                         <NavBar />
                         {children}
-                        <Footer />
+                        {showFooter && <Footer />}
                     </main>
                 </Providers>
             </body>

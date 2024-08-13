@@ -13,7 +13,12 @@ export default function ThemeSwitcher() {
     // Update svg whenever theme changes
     useEffect(() => {
         setSvg(theme === 'light' ? sun : moon);
+        // MarkdownPreivew component follows the 'data-color-mode' attribute of the document element
+        // See https://uiwjs.github.io/react-markdown-preview/#support-dark-modenight-mode 
+        // and https://github.com/jaywcjlove/dark-mode/
+        document.documentElement.setAttribute('data-color-mode', theme);
     }, [theme]);
+
     const handleClick = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
