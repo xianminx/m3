@@ -32,7 +32,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ![sample.png](./public/sample.png)
 
   
-* [Interactive fa HTML](public/sample.html)
+* [Interactive HTML](public/sample.html)
 
 ## Online Demo
 https://m3-swart.vercel.app/{format}/`{hash(map)}`?width=xx&height=xx

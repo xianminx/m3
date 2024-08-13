@@ -2,7 +2,7 @@ import { encode } from '@/utils/encoder';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
-  markdown: string;
+    markdown: string;
 };
 /**
  * @swagger
@@ -22,10 +22,10 @@ type Params = {
  *
  */
 interface RenderLinks {
-  hash: string;
-  png: string;
-  html: string;
-  interactive: string;
+    hash: string;
+    png: string;
+    html: string;
+    interactive: string;
 }
 
 /**
@@ -52,25 +52,25 @@ interface RenderLinks {
  */
 
 export async function GET(req: NextRequest, context: { params: Params }) {
-  // console.error('GET /api/links params=', params);
-  const { searchParams } = new URL(req.url);
-  const markdown = searchParams.get('markdown');
-  if (!markdown) {
-    return NextResponse.json(
-      { error: 'Format and hash are required' },
-      { status: 400 }
-    );
-  }
+    // console.error('GET /api/links params=', params);
+    const { searchParams } = new URL(req.url);
+    const markdown = searchParams.get('markdown');
+    if (!markdown) {
+        return NextResponse.json(
+            { error: 'Format and hash are required' },
+            { status: 400 }
+        );
+    }
 
-  const hash = encode(markdown as string);
+    const hash = encode(markdown as string);
 
-  const basePath = req.nextUrl.origin;
-  const links: RenderLinks = {
-    hash,
-    png: `${basePath}/render/png/${hash}`,
-    html: `${basePath}/render/html/${hash}`,
-    interactive: `${basePath}/mind/interactive?hash=${hash}`,
-  };
+    const basePath = req.nextUrl.origin;
+    const links: RenderLinks = {
+        hash,
+        png: `${basePath}/render/png/${hash}`,
+        html: `${basePath}/render/html/${hash}`,
+        interactive: `${basePath}/mind?hash=${hash}`,
+    };
 
-  return NextResponse.json(links);
+    return NextResponse.json(links);
 }
