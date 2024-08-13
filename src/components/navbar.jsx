@@ -14,6 +14,9 @@ import { Button } from '@nextui-org/button';
 import ThemeSwitcher from './ThemeSwitcher';
 import { motion } from 'framer-motion';
 import { Github, Twitter } from 'lucide-react';
+import { RiOpenaiFill } from 'react-icons/ri';
+import { GoLinkExternal } from "react-icons/go";
+import { FaMedium } from "react-icons/fa6";
 
 export default function NavBar() {
     const menuItems = [
@@ -37,8 +40,14 @@ export default function NavBar() {
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <Link href="/" className="flex items-center">
                     <NavbarBrand>
-                        <Image src="/logo/s15n.png" alt="Logo" className="h-6 w-6" />
-                        <span className="font-light tracking-tighter ml-3 text-inherit text-lg">Structuralization</span>
+                        <Image
+                            src="/logo/s15n.png"
+                            alt="Logo"
+                            className="h-6 w-6"
+                        />
+                        <span className="font-light tracking-tighter ml-3 text-inherit text-lg">
+                            Structuralization
+                        </span>
                     </NavbarBrand>
                 </Link>
             </NavbarContent>
@@ -46,7 +55,11 @@ export default function NavBar() {
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
                     <Link href="/" className="flex items-center">
-                        <Image src="/logo/s15n.png" alt="Logo" className="h-6 w-6" />
+                        <Image
+                            src="/logo/s15n.png"
+                            alt="Logo"
+                            className="h-6 w-6"
+                        />
                         <span className="font-light tracking-tighter text-2xl ml-3 flex gap-3 justify-center items-center">
                             Structuralization
                         </span>
@@ -60,6 +73,8 @@ export default function NavBar() {
                 <NavbarItem>
                     <Button as={Link} variant="light">
                         Docs
+                        <GoLinkExternal className='w-4 h-4 ml-1' />
+
                     </Button>
                 </NavbarItem>
 
@@ -71,7 +86,10 @@ export default function NavBar() {
                         rel="noopener noreferrer"
                         href="https://medium.com/@xianminx/revolutionizing-reading-how-s15n-harnesses-schema-theory-for-smarter-comprehension-dfa4e20f6f59"
                     >
+                        <FaMedium className='w-5 h-5 -mr-1'/>
                         Blog
+                        <GoLinkExternal className='w-4 h-4 ml-1' />
+
                     </Button>
                 </NavbarItem>
 
@@ -83,7 +101,10 @@ export default function NavBar() {
                         rel="noopener noreferrer"
                         href="https://chatgpt.com/g/g-6jmUwdhcA-s15n"
                     >
+                        <RiOpenaiFill className='w-5 h-5 -mr-1'/>
                         GPT
+                        <GoLinkExternal className='w-4 h-4 ml-1' />
+
                     </Button>
                 </NavbarItem>
             </NavbarContent>
@@ -102,7 +123,12 @@ export default function NavBar() {
             <NavbarMenu>
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item.label}-${index}`} isActive>
-                        <Link className="w-full" href={`${item.link}`} size="lg" color="foreground">
+                        <Link
+                            className="w-full"
+                            href={`${item.link}`}
+                            size="lg"
+                            color="foreground"
+                        >
                             {item.label}
                         </Link>
                     </NavbarMenuItem>
