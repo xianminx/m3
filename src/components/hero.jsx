@@ -4,9 +4,10 @@ import { Image } from '@nextui-org/image';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
+
+
     return (
-        <div className="relative justify-center items-center">      
- 
+        <div className="relative justify-center items-center">
             <section className="max-w-screen-xl mx-auto px-4 py-28 gap-12 md:px-8 flex flex-col justify-center items-center">
                 <motion.div
                     initial={{ y: 5, opacity: 0 }}
@@ -34,24 +35,27 @@ export default function Hero() {
                 initial={{ y: 5, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="w-full h-full absolute -top-32 flex justify-end items-center -z-10"
+                className="w-full h-full absolute -top-32 flex justify-end items-center -z-10 "
             >
-                <div className="w-3/4 flex justify-center items-center">
+                <div className="w-3/4 flex justify-center items-center ">
                     <div className="w-12 h-[600px] bg-light blur-[100px] rounded-3xl max-sm:rotate-[15deg] sm:rotate-[35deg]"></div>
                 </div>
             </motion.div>
+
+            {/* ${theme === 'dark' ? 'markmap-dark' : 'markmap'}` */}
+
             <div className="w-full h-full flex justify-center items-center">
-        <Image 
-            isBlurred
-            isZoomed
-            width={1000}
-            height={600}
-            src="/markmap.svg"
-            alt="Mind Map"
-            className="m-5 pl-96"
-        />
-    </div>
-      
+                <a href="/mind?gist=https%3A%2F%2Fgist.githubusercontent.com%2Fxianminx%2F4f3f3b8e9433aa5191682025caf7a51b%2Fraw%2FSchema%2520Theory%2520in%2520Reading.md&mode=mindmap">
+                <Image
+                    isBlurred
+                    isZoomed
+                    src="/markmap.svg"
+                    alt="Mind Map"    
+                    width={800}
+                    height={400}
+                />
+                </a>
+            </div>
         </div>
     );
 }
