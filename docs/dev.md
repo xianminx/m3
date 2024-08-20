@@ -1,6 +1,15 @@
 # Development
 
+### Png rendering
 
+This service uses [@sparticuz/chromium](https://github.com/Sparticuz/chromium) on the backend to render SVGs and capture screenshots, saving them as PNG files.
+For local development, set the environment variable `RENDER_LOCAL_CHROMIUM=true` in the `.env.local` file.
+
+Keep version for Puppeteer and @sparticuz/chromium fixed.
+
+* Puppeteer `v22.6.4` 
+* @sparticuz/chromium: `^123.0.1`
+* Chrome for Testing `123.0.6312.122`
 
 ## References
 
@@ -15,4 +24,3 @@
     > About
     🚀🎉📚 Boilerplate and Starter for Next.js 14+ with App Router and Page Router support, Tailwind CSS 3.4 and TypeScript ⚡️ Made with developer experience first: Next.js + TypeScript + ESLint + Prettier + Husky + Lint-Staged + Jest + Testing Library + Cypress + Storybook + Commitlint + VSCode + Netlify + PostCSS + Tailwind CSS.     [nextjs-boilerplate.com](https://nextjs-boilerplate.com)
     ![](https://github.com/ixartz/Next-js-Boilerplate/raw/main/public/assets/images/nextjs-starter-banner.png?raw=true)
-
