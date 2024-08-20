@@ -1,22 +1,20 @@
 'use client';
+import { Button } from '@nextui-org/button';
+import { Image } from '@nextui-org/image';
+import { Link } from '@nextui-org/link';
 import {
     Navbar,
     NavbarBrand,
     NavbarContent,
     NavbarItem,
-    NavbarMenuToggle,
     NavbarMenu,
     NavbarMenuItem,
+    NavbarMenuToggle,
 } from '@nextui-org/navbar';
-import { Image } from '@nextui-org/image';
-import { Link } from '@nextui-org/link';
-import { Button } from '@nextui-org/button';
-import ThemeSwitcher from './ThemeSwitcher';
-import { motion } from 'framer-motion';
-import { Github, Twitter } from 'lucide-react';
+import { FaGithub, FaMedium } from "react-icons/fa6";
 import { RiOpenaiFill } from 'react-icons/ri';
-import { GoLinkExternal } from "react-icons/go";
-import { FaMedium } from "react-icons/fa6";
+import { TfiArrowTopRight } from "react-icons/tfi";
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function NavBar() {
     const menuItems = [
@@ -32,7 +30,7 @@ export default function NavBar() {
     ];
 
     return (
-        <Navbar isBlurred maxWidth="xl">
+        <Navbar isBlurred maxWidth="xl" >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle />
             </NavbarContent>
@@ -70,11 +68,10 @@ export default function NavBar() {
                         Mind
                     </Button>
                 </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} variant="light">
+                <NavbarItem  >
+                    <Button isDisabled as={Link} variant="light" >
                         Docs
-                        <GoLinkExternal className='w-4 h-4 ml-1' />
-
+                        <TfiArrowTopRight className='w-4 h-4 mt-1' />
                     </Button>
                 </NavbarItem>
 
@@ -88,7 +85,7 @@ export default function NavBar() {
                     >
                         <FaMedium className='w-5 h-5 -mr-1'/>
                         Blog
-                        <GoLinkExternal className='w-4 h-4 ml-1' />
+                        <TfiArrowTopRight className='w-4 h-4 mt-1' />
 
                     </Button>
                 </NavbarItem>
@@ -103,7 +100,7 @@ export default function NavBar() {
                     >
                         <RiOpenaiFill className='w-5 h-5 -mr-1'/>
                         GPT
-                        <GoLinkExternal className='w-4 h-4 ml-1' />
+                        <TfiArrowTopRight className='w-4 h-4 mt-1' />
 
                     </Button>
                 </NavbarItem>
@@ -112,10 +109,10 @@ export default function NavBar() {
                 <NavbarItem>
                     <a href="https://github.com/xianminx/m3" target="_blank">
                         <Button isIconOnly variant="light">
-                            <Github size={24} />
+                            <FaGithub size={24}  />
                         </Button>
                     </a>
-                </NavbarItem>{' '}
+                </NavbarItem>
                 <NavbarItem>
                     <ThemeSwitcher />
                 </NavbarItem>
