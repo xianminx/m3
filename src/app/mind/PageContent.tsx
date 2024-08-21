@@ -9,6 +9,7 @@ import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { VscSplitHorizontal } from 'react-icons/vsc';
 import MarkdownEditor from '@/components/MarkdownEditor';
+import Split from '@uiw/react-split';
 
 export default function PageContent() {
     const { content, mode, setContent, setMode } = useSearchParamsHandler();
@@ -32,43 +33,15 @@ export default function PageContent() {
 
     return (
         <div className="relative flex flex-col w-full h-full flex-grow">
-            {/* <div className="absolute top-0 left-0 w-auto mr-4 ml-2 py-2 z-20">
-                <CollapsibleIconMenu
-                    initMode="mindmap"
-                    onModeChange={(mode: string) => setMode(mode)}
-                />
-            </div> */}
             <div className="flex flex-col flex-grow h-full ">
-                <div className="flex divide-x ">
-                    <VscSplitHorizontal className="absolute top-0 right-0" />
-
-                    <div className="flex-1 flex-grow" style={{ width: previewWidth }}>
-                        {/* <div className="absolute top-16 left-0 w-auto mr-4 ml-2 py-2 z-20">
-                            <GistLoader onMarkdownContent={(content) => setContent(content)} />
-                        </div> */}
-                        <MarkdownEditor
-                            theme={theme}
-                            content={content}
-                            onChange={handleEditorChange}
-                        />
+                <Split style={{ border: '1px solid #d5d5d5', borderRadius: 3 }}>
+                    <div style={{ width: '50%' }}>
+                        <MarkdownEditor theme={theme} content={content} onChange={handleEditorChange} />
                     </div>
-                    <Resizer onResize={handleResize} />
-                    <div className="flex-1">
+                    <div style={{ width: '50%' }}>
                         <Mindmap content={content} className={`p-2 ${theme === 'dark' ? 'markmap-dark' : 'markmap'}`} />
                     </div>
-                </div>
-
-                {/* {mode === 'preview' && (
-                    <MarkdownPreview source={content} style={{ padding: 32 }} />
-                )}
-                {mode === 'mindmap' && (
-                    <Mindmap
-                        content={content}
-                        className={`p-2 ${
-                            theme === 'dark' ? 'markmap-dark' : 'markmap'
-                        }`}
-                    />
-                )} */}
+                </Split>
             </div>
         </div>
     );
