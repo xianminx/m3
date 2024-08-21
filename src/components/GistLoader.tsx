@@ -1,26 +1,15 @@
 import {
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownTrigger,
-    Modal,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Input,
-    Checkbox,
-    Link,
     Button,
-    useDisclosure,
+    Input,
+    Modal,
+    ModalBody,
+    ModalContent,
     Progress,
+    Tooltip,
+    useDisclosure
 } from '@nextui-org/react';
-import { on } from 'events';
 import { useState } from 'react';
-import { FaMarkdown } from 'react-icons/fa';
-import { RiMindMap } from 'react-icons/ri';
-import { VscGist, VscPreview } from 'react-icons/vsc';
-import { FaLink } from 'react-icons/fa6';
+import { FiUpload } from "react-icons/fi";
 
 interface GistLoaderProps {
     onMarkdownContent: (content: string) => void;
@@ -56,17 +45,21 @@ const GistLoader = (props: GistLoaderProps) => {
 
     return (
         <div className="relative inline-block" onClick={onOpen}>
+                                <Tooltip content={"import from local or url"} placement='bottom'>
+
             <div className=" flex items-center justify-end gap-2 transition-all duration-300 ease-in-out">
-                <div
+                {/* <div
                     className={`transform transition-all duration-300 ease-in-out flex items-center scale-1 hover:scale-150
                                 text-neutral-500 hover:text-primary  hover:translate-x-10  bg-white dark:bg-black gap-2 hover:px-4`}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                >
-                    <FaLink className={iconClasses} />
-                    {isHovered && 'Load markdown from url'}
-                </div>
+                > */}
+
+                    <FiUpload className={iconClasses} />
+                    {/* {isHovered && 'Load markdown from url'} */}
+                {/* </div> */}
             </div>
+            </Tooltip>
 
             <Modal
                 isOpen={isOpen}

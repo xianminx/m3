@@ -37,9 +37,7 @@ export const useSearchParamsHandler = (): UseSearchParamsHandlerProps => {
             }
             if (!initContent) {
                 try {
-                    console.log(
-                        'no gist or hash is given, load the sample markdown'
-                    );
+                    console.log('no gist or hash is given, load the sample markdown');
 
                     const response = await fetch(
                         'https://gist.githubusercontent.com/xianminx/4f3f3b8e9433aa5191682025caf7a51b/raw/b25ded6d8f82ccdc54982252f8908938d319e3b6/Schema%2520Theory%2520in%2520Reading.md'
@@ -55,14 +53,14 @@ export const useSearchParamsHandler = (): UseSearchParamsHandlerProps => {
         fetchData();
     }, [searchParams]);
 
-    useEffect(() => {
-        const encodedContent = encode(content);
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.set('mode', mode);
-        newParams.set('hash', encodedContent);
-        router.replace(`?${newParams.toString()}`);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [content, mode]);
+    // useEffect(() => {
+    //     const encodedContent = encode(content);
+    //     const newParams = new URLSearchParams(searchParams.toString());
+    //     newParams.set('mode', mode);
+    //     newParams.set('hash', encodedContent);
+    //     router.replace(`?${newParams.toString()}`);
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [content, mode]);
 
     return { content, mode, setContent, setMode };
 };
