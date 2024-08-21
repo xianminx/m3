@@ -1,6 +1,6 @@
 // import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
-import  PageContent  from './PageContent';
+import PageContent from './PageContent';
 
 // const LazyLoadedPageContent = dynamic(() => import('./PageContent'), {
 //     ssr: false, // Disable SSR for this component

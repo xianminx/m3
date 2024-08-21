@@ -70,7 +70,7 @@ export default function Mindmap(props: MarkmapProps) {
     }, [isReady, refMm, content, transformer]);
 
     return (
-        <div className={`flex flex-col flex-grow w-full h-full ${className}`} style={style}> 
+        <div className={`relative flex flex-col flex-grow w-full h-full ${className}`} style={style}> 
             <svg className="grow-1 flex-grow w-full h-full" ref={refSvg} />
             <div className="absolute right-0 top-0 mr-2 mt-2" ref={refToolbar}></div>
             

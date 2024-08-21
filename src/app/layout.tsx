@@ -18,7 +18,9 @@ export default function RootLayout({
 
     const domain = process.env.NEXT_PUBLIC_DOMAIN || '';
     const customDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_CUSTOM_DOMAIN;
-    const showFooter = !pathname.startsWith('/mind'); // Hide footer for /mind and its subpages
+    const isMindPage = pathname.startsWith('/mind'); // Hide footer for /mind and its subpages
+
+
 
     return (
         <html lang="en" suppressHydrationWarning>
@@ -27,10 +29,10 @@ export default function RootLayout({
             </head>
             <body className={inter.className}>
                 <Providers>
-                    <main className="flex flex-col min-h-dvh">
+                    <main className={`flex flex-col min-h-dvh ${isMindPage ? 'h-screen': ''}`}>
                         <NavBar />
                         {children}
-                        {showFooter && <Footer />}
+                        {!isMindPage && <Footer />}
                     </main>
                 </Providers>
             </body>
